@@ -132,7 +132,7 @@ window.onload = function () {
     `;
   }
 
-  //  Fetch Weather (Updated to accept city name or lat,lon string)
+  //  Fetch Weather 
   async function fetchWeather(query) {
     try {
       const apiKey = "b237dfc7533247e784c180834260906";
