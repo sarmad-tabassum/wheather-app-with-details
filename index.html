@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NextGen Weather</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <video id="video-bg" autoplay muted loop playsinline>
+      <source src="videos/sunny.mp4" type="video/mp4" />
+    </video>
+
+    <div id="card-bg-dark"></div>
+    <canvas id="card-center"></canvas>
+
+    <div class="app-container">
+      <div class="weather-card">
+        <h1>Weather</h1>
+
+        <div class="search-box">
+          <input type="text" id="cityInput" placeholder="Search city..." />
+          <button id="searchBtn">Search</button>
+        </div>
+
+        <div class="tabs-nav">
+          <button class="tab-btn active" data-tab="current">Current</button>
+          <button class="tab-btn" data-tab="hourly">Hourly</button>
+          <button class="tab-btn" data-tab="forecast">5-Day</button>
+          <button class="tab-btn" data-tab="air">Air Quality</button>
+          <button class="tab-btn" data-tab="alerts">Alerts</button>
+        </div>
+
+        <div class="tab-content">
+          <div class="tab-panel active" id="current">
+            <div class="current-main">
+              <img id="weatherIcon" />
+              <h2 id="cityName">--</h2>
+              <p id="country">--</p>
+              <p id="temperature">-- °C</p>
+              <p id="description">--</p>
+            </div>
+
+            <div class="extra-info">
+              <div>
+                <span>Feels Like</span>
+                <p id="feelsLike">-- °C</p>
+              </div>
+              <div>
+                <span>Humidity</span>
+                <p id="humidity">--%</p>
+              </div>
+              <div>
+                <span>Wind</span>
+                <p id="wind">-- km/h</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-panel" id="hourly">
+            <div class="hourly-wrapper">
+              <button class="scroll-btn left-btn" id="slideLeft">
+                &#10094;
+              </button>
+              <div class="scroll-container" id="hourlyList"></div>
+              <button class="scroll-btn right-btn" id="slideRight">
+                &#10095;
+              </button>
+            </div>
+          </div>
+
+          <div class="tab-panel" id="forecast">
+            <div class="list-container" id="forecastList"></div>
+          </div>
+
+          <div class="tab-panel" id="air">
+            <div class="aqi-container">
+              <h2>Air Quality : <span id="aqiValue"> --</span></h2>
+
+              <div class="aqi-grid">
+                <div>
+                  <span>CO:</span>
+                  <p id="aqi-co">--</p>
+                </div>
+                <div>
+                  <span>NO2:</span>
+                  <p id="aqi-no2">--</p>
+                </div>
+                <div>
+                  <span>O3:</span>
+                  <p id="aqi-o3">--</p>
+                </div>
+                <div>
+                  <span>PM2.5:</span>
+                  <p id="aqi-pm25">--</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-panel" id="alerts">
+            <div class="list-container" id="alertsContainer">
+              <p class="no-alerts">No active weather alerts for this city.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
